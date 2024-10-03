@@ -58,4 +58,4 @@ municipios_alvo <- function(pop = 70000){
   readr::write_rds(data,"data/municipios_alvo.rds")
   data
 }
-a <- municipios_alvo()
+
