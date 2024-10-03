@@ -55,4 +55,7 @@ municipios_alvo <- function(pop = 70000){
     dplyr::first()
 
   data <- dplyr::anti_join(data,cascavel)
+  readr::write_rds(data,"data/municipios_alvo.rds")
+  data
 }
+a <- municipios_alvo()

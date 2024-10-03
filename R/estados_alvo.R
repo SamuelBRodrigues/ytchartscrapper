@@ -30,5 +30,6 @@ estados_alvo <- function(){
                          "state of Distrito Federal, Brazil" ~ "Federal District, Brazil",
                          .default = query)
     )
-
+  readr::write_rds(data,"data/estados_alvo.rds")
+  data
 }
