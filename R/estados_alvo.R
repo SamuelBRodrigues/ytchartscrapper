@@ -28,8 +28,16 @@ estados_alvo <- function(){
                      stringr::str_glue("Ceará, Brazil")),
       query = case_match(query,
                          "state of Distrito Federal, Brazil" ~ "Federal District, Brazil",
-                         .default = query)
+                         .default = query),
+      name_state = case_match(name_state,
+                              "Rio Grande Do Norte" ~ "Rio Grande do Norte",
+                              "Rio Grande Do Sul" ~ "Rio Grande do Sul",
+                              "Rio De Janeiro" ~ "Rio de Janeiro",
+                              "Espirito Santo" ~ "Espírito Santo",
+                              "Mato Grosso Do Sul" ~ "Mato Grosso do Sul",
+                              .default = name_state)
     )
   readr::write_rds(data,"data/estados_alvo.rds")
   data
 }
+
