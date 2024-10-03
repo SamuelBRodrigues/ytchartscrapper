@@ -1,13 +1,24 @@
 Package: ytchartscrapper
 Type: Package
-Title: What the Package Does (Title Case)
+Title: local scraping of youtube charts
 Version: 0.1.0
-Author: Who wrote it
+Author: Perceptron Analitcs 
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: These package local scrape data from youtube charts. 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/SamuelBRodrigues/ytchartscrapper
 BugReports: https://github.com/SamuelBRodrigues/ytchartscrapper/issues
+RoxygenNote: 7.3.1
+Imports: 
+    dplyr,
+    geobr,
+    httr2,
+    janitor,
+    magrittr,
+    purrr,
+    readxl,
+    stringr,
+    tibble,
+    tidyr

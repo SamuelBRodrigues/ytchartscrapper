@@ -1,6 +1,21 @@
+#' Generate URL for YouTube Charts by State and City
+#'
+#' This function generates the URL used to extract YouTube Charts data for a specific state and city.
+#'
+#' @param state The state code.
+#' @param city The city code.
+#'
+#' @return A URL string for the YouTube Charts API.
+#'
+#' @examples
+#' \dontrun{
+#'   url <- url_estados_cidade_br(state = "SP", city = "SaoPaulo")
+#' }
+#' @export
+
 url_estados_cidade_br <- function(alvo_query){
-  
-  map(alvo_query,
+
+purrr::map(alvo_query,
       ~ httr2::request("https://clients1.google.com/complete/search") |>
         httr2::req_url_query(
           client = "yt-music-charts",
@@ -23,6 +38,6 @@ url_estados_cidade_br <- function(alvo_query){
         httr2::req_perform() |>
         httr2::resp_body_string()
   )
-  
+
 }
 

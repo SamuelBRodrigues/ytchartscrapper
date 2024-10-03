@@ -1,19 +1,32 @@
-library(tidyverse)
+#' Extract YouTube Chart Data
+#'
+#' This function extracts data from the YouTube Charts for the specified city and time period.
+#'
+#' @param id Character vector containing the city codes.
+#' @param time_period Character vector containing the time period for data extraction.
+#'
+#' @return A list with the response data from YouTube Charts API.
+#'
+#' @examples
+#' \dontrun{
+#'   data <- dados_yt_charts(id = c("0x123", "0x456"), time_period = c("2023-09", "2023-10"))
+#' }
+#' @export
 
 dados_yt_charts <- function(id, time_period){
-  
-  data <- map2(id,
+
+  data <- purrr::map2(id,
                time_period,
                ~{
                  codigo_cidade <- .x
-                          
+
                  Sys.sleep(runif(1, 1,3))
-                          
-                 httr2::request("https://charts.youtube.com/youtubei/v1/browse") |> 
+
+                 httr2::request("https://charts.youtube.com/youtubei/v1/browse") |>
                    httr2::req_url_query(
                      alt = "json",
                      key = "AIzaSyCzEW7JUJdSql0-2V4tHUb6laYm4iAE_dM",
-                   ) |> 
+                   ) |>
                    httr2::req_headers(
                      accept = "*/*",
                      `accept-language` = "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -33,17 +46,17 @@ dados_yt_charts <- function(id, time_period){
                      `x-youtube-page-cl` = "663262755",
                      `x-youtube-time-zone` = "America/Fortaleza",
                      `x-youtube-utc-offset` = "-180",
-                   ) |> 
+                   ) |>
                    httr2::req_body_raw(
                      str_glue(
                        '{{"context": {{"client": {{"clientName": "WEB_MUSIC_ANALYTICS","clientVersion": "2.0","hl": "pt","gl": "BR","experimentIds": [],"experimentsToken": "", "theme": "MUSIC"}}, "capabilities": {{}}, "request": {{"internalExperimentFlags": []}}}}, "browseId": "FEmusic_analytics_insights_location", "query": "perspective=LOCATION&entity_params_entity=LOCATION&location_params_id={.x}&date_params_start_time={str_extract(.y,str_extract(.y,"[:graph:]{10}"))}T03%3A00%3A00Z&date_params_end_time={str_extract(.y,str_extract(.y,"[:graph:]{10}$"))}T03%3A00%3A00Z&date_params_interval=DAY"}}'
                      ),
                      "application/json"
-                   ) %>% 
-                   httr2::req_perform() %>% 
+                   ) %>%
+                   httr2::req_perform() %>%
                    httr2::resp_body_json()
                 }
-                        
-                        
+
+
 )
 }
