@@ -1,11 +1,13 @@
 Package: ytchartscrapper
 Type: Package
-Title: local scraping of youtube charts
+Title: Local scraping of YouTube Charts
 Version: 0.1.0
-Author: Perceptron Analitcs 
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: These package local scrape data from youtube charts. 
-License: What license is it under?
+Author: c(
+    person("Samuel", "Rodrigues", email = "sam.baraque@gmail.com", role = c("aut", "cre")),
+    person("Baruque", "Rodrigues", email = "quemuel.baruque@ufpe.br", role = "aut")) 
+Maintainer: The package maintainer <sam.baraque@gmail.com>
+Description: These package scrape local data from youtube charts. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/SamuelBRodrigues/ytchartscrapper
